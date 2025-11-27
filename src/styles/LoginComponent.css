@@ -6,8 +6,8 @@
     margin: 0 auto;
     align-items: center;
     width: 50%;
-    transform: translateX(-50px); /* start position (right) */
-    opacity: .5; /* optional fade in */
+    transform: translatey(-100px); /* start position (right) */
+    opacity: .8; /* optional fade in */
     animation: moveLeft 1s forwards; /* 1s animation */
 }
 

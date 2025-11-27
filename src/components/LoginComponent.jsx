@@ -1,13 +1,18 @@
 import React from 'react'
 import "../styles/LoginComponent.css"
 
-export default function LoginComponent({goToRegister}) {
+export default function LoginComponent({goToRegister,onLogin}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLogin();
+  }
+
   return (
     <div className='login-container'>
       <h1>FitPlaner</h1>
       <h2>Welcome Back</h2>
       <p>Sign In to continue your fitness journey</p>
-      <form className='login-form'>
+      <form className='login-form' onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" required placeholder='you@gmail.com' />
         <label htmlFor="password">Password</label>
