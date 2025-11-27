@@ -1,6 +1,6 @@
 import LoginComponent from "../components/LoginComponent";
 import RegisterComponent from "../components/RegisterComponent";
-import "../styles/authentication.css";
+import "../styles/Authentication.css";
 
 export default function Authentication() {
   return (
