@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function RegisterComponent() {
+export default function RegisterComponent({goToLogin}) {
     return (
         <div className='login-container'>
         <h1>FitPlaner</h1>
@@ -15,7 +15,7 @@ export default function RegisterComponent() {
             <input type="password" id="password" name="password" required />
             <button type="submit">Create Account</button>
         </form>
-        <div><p>Aleardy have an account?</p><a href="/register">Log In</a></div>
+        <div><p>Aleardy have an account?</p><a onClick={(e) => {e.preventDefault; goToLogin();}}>Log In</a></div>
         </div>
     )
 }

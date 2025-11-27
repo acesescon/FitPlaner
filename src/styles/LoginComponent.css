@@ -6,8 +6,8 @@
     margin: 0 auto;
     align-items: center;
     width: 50%;
-    transform: translateX(50px); /* start position (right) */
-    opacity: 0; /* optional fade in */
+    transform: translateX(-50px); /* start position (right) */
+    opacity: .5; /* optional fade in */
     animation: moveLeft 1s forwards; /* 1s animation */
 }
 
@@ -62,4 +62,10 @@
     margin-left: .5rem;
     color: #FF6B35;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.login-container a:hover{
+    text-decoration: underline;
+
 }
