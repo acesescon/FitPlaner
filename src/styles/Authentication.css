@@ -1,0 +1,17 @@
+.white-container{
+    width: 50%;
+    display: flex;
+}
+
+.orange-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: white;
+    background: linear-gradient(to right,#ff7746,#fa6d21,#EA580C,#EA580C);
+}
+
+.authentication-container{
+    display: flex;
+    height: 100vh;
+}
