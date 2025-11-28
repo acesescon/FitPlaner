@@ -1,6 +1,10 @@
-import { createClient } from '@supabase/supabase-js'
+// api/database/server.js
+import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY
+// Gumawa ng Supabase client gamit ang server-side environment variables
+const supabase = createClient(
+  process.env.SUPABASE_URL,  // must be set sa Vercel
+  process.env.SUPABASE_KEY   // must be set sa Vercel
+);
 
-export default supabase = createClient(supabaseUrl, supabaseAnonKey)
+export default supabase;  // ✅ default export
