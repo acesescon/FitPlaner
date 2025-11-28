@@ -7,8 +7,14 @@ import LandingPage from "./pages/LandingPage"
 import Settings from "./pages/Settings"
 
 export default function App() {
-  const [isLoggedIn, setISLoggedIn] = useState(false);
+  
 
+  {/*
+  ===========================================
+  HANDLE SUBMIT FUNCTION (CALLS onLogin PROP)
+  LoginComponent.jsx => Authentication.jsx => App.jsx
+  ===========================================*/}
+  const [isLoggedIn, setISLoggedIn] = useState(false);
   const handleLogin = () => {
     setISLoggedIn(true);
   }
@@ -17,9 +23,9 @@ export default function App() {
     <div>
 
       {isLoggedIn ? (
-        <ContetsList/> 
+        <ContetsList/> //if true
       ) : (
-        <Authentication onLogin={handleLogin} />
+        <Authentication onLogin={handleLogin} /> //if false
       )}
       
     </div>
