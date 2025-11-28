@@ -1,4 +1,4 @@
-import supabase from "../src/api/database/server.js"; //import database 
+import supabase from "./database/server.js"; //import database 
 
 export default async function handler(req, res) {
     // Only allow POST requests

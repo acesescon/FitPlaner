@@ -1,5 +1,5 @@
 import "../styles/LoginComponent.css"
-import { loginUser } from '../api/users_table/login';
+import { loginUser } from '../api/login';
 import { useState } from 'react';
 
 export default function LoginComponent({goToRegister,onLogin}) {
