@@ -1,5 +1,6 @@
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Routes, Route, Navigate, Link, Router } from "react-router-dom";
 import React, {useState} from "react";
+import Navbar from "./components/NavbarComponent"
 import Authentication from "./pages/Authentication"
 import ContetsList from "./pages/ContentsList"
 import CreatePage from "./pages/CreatePage"
@@ -20,14 +21,27 @@ export default function App() {
   }
 
   return (
-    <div>
+    <>
 
       {isLoggedIn ? (
-        <ContetsList/> //if true
+        //if true = isLoggedIn
+        <div className="app-container">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<LandingPage/>} />
+              <Route path="/contents" element={<ContetsList/>} />
+              <Route path="/create" element={<CreatePage/>} />
+              <Route path="/settings" element={<Settings/>} />
+            </Routes>
+          </main>
+        </div>
+        
       ) : (
-        <Authentication onLogin={handleLogin} /> //if false
+        //if false = isLoggedIn
+        <Authentication onLogin={handleLogin} /> 
       )}
       
-    </div>
+    </>
   )
 }
