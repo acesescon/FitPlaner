@@ -38,7 +38,7 @@ export default function LoginComponent({goToRegister,onLogin}) {
         <button type="submit">Sign In</button>
       </form>
 
-      <div><p>Don't have an account?</p><a onClick={(e) => {e.preventDefault; goToRegister()}}>Sign Up</a></div>
+      <div><p>Don't have an account?</p><a onClick={(e) => {e.preventDefault(); goToRegister()}}>Sign Up</a></div>
       <p>{error}</p>
     </div>
   )

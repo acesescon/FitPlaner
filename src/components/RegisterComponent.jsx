@@ -15,7 +15,7 @@ export default function RegisterComponent({goToLogin}) {
             <input type="password" id="password" name="password" required />
             <button type="submit">Create Account</button>
         </form>
-        <div><p>Aleardy have an account?</p><a onClick={(e) => {e.preventDefault; goToLogin();}}>Log In</a></div>
+        <div><p>Aleardy have an account?</p><a onClick={(e) => {e.preventDefault(); goToLogin();}}>Log In</a></div>
         </div>
     )
 }
