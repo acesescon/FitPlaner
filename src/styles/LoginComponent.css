@@ -1,0 +1,71 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    width: 50%;
+    transform: translatey(-100px); /* start position (right) */
+    opacity: .8; /* optional fade in */
+    animation: moveLeft 1s forwards; /* 1s animation */
+}
+
+/* Keyframes */
+@keyframes moveLeft {
+    to {
+        transform: translateX(0); /* final position */
+        opacity: 1;
+    }
+}
+
+.login-container div{
+    display: flex;
+}
+
+.login-container form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-container h1{
+    margin-bottom: 2rem;
+}
+
+.login-container h2{
+    margin-bottom: 1rem;
+}
+
+.login-container p{
+    margin-bottom: 2rem;
+    color: #4B5563;
+}
+
+.login-container label{
+    margin-bottom: 0.5rem;
+    font-size: .8rem;
+    color: #31373f;
+}
+
+.login-container button{
+    background-color: #FF6B35;
+    color: white;
+    margin-bottom: 2.5rem;
+}
+
+.login-container button:hover{
+    background-color: #e55a26;
+}
+
+.login-container a{
+    margin-left: .5rem;
+    color: #FF6B35;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-container a:hover{
+    text-decoration: underline;
+
+}

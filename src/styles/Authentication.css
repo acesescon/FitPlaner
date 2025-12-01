@@ -1,0 +1,46 @@
+.white-container{
+    width: 50%;
+    display: flex;
+}
+
+.orange-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    color: white;
+    background: linear-gradient(to right,#ff7746,#fa6d21,#EA580C,#EA580C);
+}
+
+.orange-container h1{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.orange-container .explain{
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+
+.feature-container{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.feature-container i{
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    background-color: #ffffff2c;
+    border-radius: 10px;
+}
+
+.authentication-container{
+    display: flex;
+    height: 100vh;
+}
+
