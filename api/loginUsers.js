@@ -1,58 +1,52 @@
 // api/loginUsers.js
-import { supabase } from "./database/server.js";
+import supabase from "./database/server.js";
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
-
-    // Manual JSON parsing (necessary sa Vercel if not Next.js)
-    let body = {};
-    try {
-      body = await new Promise((resolve, reject) => {
-        let data = '';
-        req.on('data', chunk => data += chunk);
-        req.on('end', () => resolve(JSON.parse(data)));
-        req.on('error', err => reject(err));
-      });
-    } catch (err) {
-      return res.status(400).json({ error: "Invalid JSON", err });
-    }
-
-    const { email, password } = body;
+    const { email, password } = await new Promise((resolve, reject) => {
+      let body = "";
+      req.on("data", chunk => body += chunk);
+      req.on("end", () => resolve(JSON.parse(body)));
+      req.on("error", err => reject(err));
+    });
 
     if (!email || !password) {
       return res.status(400).json({ error: "Email and password are required" });
     }
 
-    // Fetch user from Supabase
-    const { data: users, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("email", email)
-      .limit(1);
+    // Step 1: Login via Supabase Auth
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-    if (error) throw error;
-
-    if (!users || users.length === 0) {
-      return res.status(400).json({ error: "Email not found" });
+    if (authError) {
+      return res.status(400).json({ error: authError.message });
     }
 
-    const user = users[0];
+    const authUser = authData.user;
 
-    if (user.password !== password) {
-      return res.status(400).json({ error: "Incorrect password" });
+    // Step 2: Fetch extra info from your `users` table
+    const { data: profile, error: profileError } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", authUser.id)
+      .single();
+
+    if (profileError) {
+      return res.status(400).json({ error: profileError.message });
     }
 
     return res.status(200).json({
       message: "Login successful",
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-      },
+      user: profile,
+      session: authData.session, // token for frontend auth
     });
+
   } catch (err) {
     console.error("Login function error:", err);
     return res.status(500).json({ error: "Internal server error", detail: err.toString() });
