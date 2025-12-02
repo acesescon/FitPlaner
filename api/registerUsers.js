@@ -1,4 +1,3 @@
-// api/registerUsers.js
 import supabase from "./database/server.js"; 
 
 export default async function handler(req, res) {
@@ -7,13 +6,23 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { name, email, password } = req.body;
-
-        // Step 1: Register user in Supabase Auth
-        const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
+        // 1️⃣ Manual JSON parsing
+        let body = "";
+        await new Promise((resolve, reject) => {
+        req.on("data", chunk => body += chunk);
+        req.on("end", resolve);
+        req.on("error", reject);
         });
+
+        const { name, email, password } = JSON.parse(body);
+
+        // 2️⃣ Validate fields
+        if (!name || !email || !password) {
+        return res.status(400).json({ success: false, message: "All fields are required" });
+        }
+
+        // 3️⃣ Register user in Supabase Auth
+        const { data, error } = await supabase.auth.signUp({ email, password });
 
         if (error) {
         return res.status(400).json({ success: false, message: error.message });
@@ -21,11 +30,11 @@ export default async function handler(req, res) {
 
         const user = data.user;
 
-        // Step 2: Insert extra info in your `users` table (no password)
+        // 4️⃣ Insert extra info in your `users` table (no password)
         const { error: profileError } = await supabase
         .from("users")
         .insert({
-            id: user.id,   // match auth user id
+            id: user.id,
             name,
             email,
         });
@@ -34,12 +43,10 @@ export default async function handler(req, res) {
         return res.status(400).json({ success: false, message: profileError.message });
         }
 
-        return res.status(200).json({
-        success: true,
-        message: "Registered successfully!",
-        });
+        return res.status(200).json({ success: true, message: "Registered successfully!" });
 
     } catch (err) {
+        console.error("Register error:", err);
         return res.status(500).json({ success: false, message: "Server error", err });
     }
 }
