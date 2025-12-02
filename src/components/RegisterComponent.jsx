@@ -15,6 +15,8 @@ export default function RegisterComponent({goToLogin}) {
         e.preventDefault();
         const result = await registerUser(name, email, password);
         setMessage(result.message);
+        alert(message);
+        goToLogin();
     };
 
     return (
@@ -30,7 +32,6 @@ export default function RegisterComponent({goToLogin}) {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Create Account</button>
-            {message && <p>{message}</p>}
         </form>
         <div><p>Aleardy have an account?</p><a onClick={(e) => {e.preventDefault(); goToLogin();}}>Log In</a></div>
         </div>
