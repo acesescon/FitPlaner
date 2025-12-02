@@ -9,20 +9,26 @@ export default async function handler(req, res) {
         // 1️⃣ Manual JSON parsing
         let body = "";
         await new Promise((resolve, reject) => {
-        req.on("data", chunk => body += chunk);
-        req.on("end", resolve);
-        req.on("error", reject);
+            req.on("data", chunk => body += chunk);
+            req.on("end", resolve);
+            req.on("error", reject);
         });
 
         const { name, email, password } = JSON.parse(body);
 
+        const cleanEmail = email.trim();
+
         // 2️⃣ Validate fields
         if (!name || !email || !password) {
-        return res.status(400).json({ success: false, message: "All fields are required" });
+            return res.status(400).json({ success: false, message: "All fields are required" });
+        }
+
+        if (!cleanEmail.includes("@")) {
+            return res.status(400).json({ success: false, message: "Invalid email format" });
         }
 
         // 3️⃣ Register user in Supabase Auth
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({ email:cleanEmail, password });
 
         if (error) {
         return res.status(400).json({ success: false, message: error.message });
