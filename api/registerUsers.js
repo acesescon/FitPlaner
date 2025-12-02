@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         const { error: profileError } = await supabase
         .from("users")
         .insert({
-            id: user.id,
+            auth_id: user.id,
             name,
             email,
         });

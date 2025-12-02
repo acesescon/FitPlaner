@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     const { data: profile, error: profileError } = await supabase
       .from("users")
       .select("*")
-      .eq("id", authUser.id)
+      .eq("auth_id", authUser.id)
       .single();
 
     if (profileError) {
