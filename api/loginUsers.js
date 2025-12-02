@@ -1,42 +1,37 @@
 import supabase from "./database/server.js";
+import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { email, password } = req.body; // ✅ Vercel auto-parses JSON
+  const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({ error: "Email and password are required" });
   }
 
-  // Step 1: Login via Supabase Auth
-  const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (authError) {
-    return res.status(400).json({ error: authError.message });
-  }
-
-  const authUser = authData.user;
-
-  // Step 2: Fetch extra info from your `users` table
-  const { data: profile, error: profileError } = await supabase
+  // Fetch user by email
+  const { data: user, error } = await supabase
     .from("users")
     .select("*")
-    .eq("auth_id", authUser.id)
+    .eq("email", email)
     .single();
 
-  if (profileError) {
-    return res.status(400).json({ error: profileError.message });
+  if (error || !user) {
+    return res.status(400).json({ error: "Invalid login credentials" });
   }
 
+  // Compare password
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(400).json({ error: "Invalid login credentials" });
+  }
+
+  // Success
   return res.status(200).json({
     message: "Login successful",
-    user: profile,
-    session: authData.session,
+    user: { id: user.id, name: user.name, email: user.email },
   });
 }
