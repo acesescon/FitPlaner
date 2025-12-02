@@ -28,13 +28,10 @@ export default async function handler(req, res) {
         return res.status(400).json({ success: false, message: error.message });
         }
 
-        const user = data.user;
-
         // 4️⃣ Insert extra info in your `users` table (no password)
         const { error: profileError } = await supabase
         .from("users")
         .insert({
-            id: user.id,
             name,
             email,
         });
