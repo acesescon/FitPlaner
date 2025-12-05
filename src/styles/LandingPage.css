@@ -1,0 +1,83 @@
+.profile-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-container img {
+    width: 350px;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+
+.info-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.info h3{
+    color: #FF6B35 ;
+}
+
+.info p{
+    margin-top: 1rem;
+    color: #4B5563;
+    width: 90%;
+}
+
+.stats-box {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.stat{
+    width: 12rem;
+    border: 1px solid #E5E7EB;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: #4B556320 0px 1px 2px 0px;
+}
+
+.getstarted-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2rem;
+    margin-top: 4rem;
+    transform: translatey(-20px); /* start position (right) */
+    opacity: .8; /* optional fade in */
+    animation: moveLeft .5s forwards; /* 1s animation */
+}
+
+.create{
+    width: 50%;
+    padding: 3rem;
+    background-color: #FF6B35;
+    border-radius: .5rem;
+    color: white;
+}
+
+.create h2{
+    margin-bottom: 1.5rem;
+}
+
+.create p{
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+}
+
+.create button{
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0;
+}

@@ -18,10 +18,8 @@ export default function LoginComponent({goToRegister,onLogin}) {
     if (result.error) {
       setError(result.error);
     } else {
-      
       onLogin();
-      setError(result.error || `Welcome back, ${result.user.name}!`); // Optional success message
-      alert(error);
+      alert("Login successful");
     }
   }
 
@@ -41,6 +39,7 @@ export default function LoginComponent({goToRegister,onLogin}) {
       </form>
 
       <div><p>Don't have an account?</p><a onClick={(e) => {e.preventDefault(); goToRegister()}}>Sign Up</a></div>
+      <p>{error}</p>
     </div>
   )
 }

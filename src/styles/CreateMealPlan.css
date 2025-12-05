@@ -1,0 +1,94 @@
+.create-meal-plan h1{
+    margin-bottom: 1rem;
+}
+
+.create-meal-plan p{
+    margin-bottom: 2rem;
+}
+
+.plan-details{
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    box-shadow: #4B556320 0px 1px 2px;
+}
+
+.input-group{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.input-field{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-plans{
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    box-shadow: #4B556320 0px 1px 2px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.add-meal-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: #FF6B35;
+    color: white;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.meal-group{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem; 
+    background-color: #F9FAFB;
+}
+
+.meal-row{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: .5rem;
+}
+
+.meal-row input{
+    flex: 1;
+}
+
+.form-actions{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-plan-btn, .cancel-btn{
+    padding: .75rem 1.5rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.create-plan-btn{
+    background-color: #FF6B35;
+    color: white;
+}
+
+.cancel-btn{
+    background-color: #e5e7eb00;
+    color: #374151;
+}

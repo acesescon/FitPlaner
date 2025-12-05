@@ -19,7 +19,6 @@ input{
 
 button{
     padding: 0.8rem;
-    margin-top: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -27,5 +26,13 @@ button{
 
 .app-container {
     display: flex;
-    height: 100vh;
+    
+}
+
+.main-content {
+    width: 100%;
+    height: auto;
+    padding: 3rem;
+    background-color: #F9FAFB;
+    min-height: 100vh; /* ✔ allows content to grow */
 }

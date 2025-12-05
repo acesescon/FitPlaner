@@ -15,7 +15,7 @@ export default function App() {
   HANDLE SUBMIT FUNCTION (CALLS onLogin PROP)
   LoginComponent.jsx => Authentication.jsx => App.jsx
   ===========================================*/}
-  const [isLoggedIn, setISLoggedIn] = useState(false);
+  const [isLoggedIn, setISLoggedIn] = useState(true);
   const handleLogin = () => {
     setISLoggedIn(true);
   }

@@ -15,7 +15,7 @@ export default function RegisterComponent({goToLogin}) {
         e.preventDefault();
         const result = await registerUser(name, email, password);
         setMessage(result.message);
-        alert(message);
+        alert(message)
         goToLogin();
     };
 

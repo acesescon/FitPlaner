@@ -1,0 +1,44 @@
+.heading-container {
+    margin-bottom: 3rem;
+}
+
+.heading-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.content-buttons button {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #E5E7EB;
+    background-color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: #4B556320 0px 1px 2px 0px;
+}
+
+.content-buttons button:hover {
+    background-color: #FF6B35;
+    color: white;
+    border-color: #FF6B35;
+}
+
+.filter-container {
+    margin-bottom: 2rem;
+}
+
+.filter-container label {
+    margin-right: 1rem;
+}
+
+.filter-container select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #E5E7EB;
+    box-shadow: #4B556320 0px 1px 2px 0px;
+    border-radius: 5px;
+}
