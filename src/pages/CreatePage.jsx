@@ -1,17 +1,26 @@
 import React from 'react'
+import { useState } from 'react'
 import '../styles/CreatePage.css'
 import CreateMealPlan from '../components/CreateMealPlan.jsx'
 import CreateProgram from '../components/CreateProgram.jsx'
 
 export default function CreatePage() {
+  const [renderCreate, setRenderCreate] = useState("workout") 
+
   return (
     <>
-      {/* CreatePage Content Goes Here
-      -conditional rendering between meal plan and program plan
-      -use prop */}
+      <div className="create-page-tabs">
+        <button
+          className={`plan ${renderCreate === "workout" ? "active" : ""}`}
+          onClick = {() => setRenderCreate("workout")}
+          >Workout Plan</button>
+        <button
+          className={`plan ${renderCreate === "mealplan" ? "active" : ""}`}
+          onClick = {() => setRenderCreate("mealplan")}
+          >Meal Plan</button>
+      </div>
 
-      <CreateProgram />
-      {/*<CreateMealPlan />*/}
+      {renderCreate === "workout" ? <CreateProgram /> : <CreateMealPlan />} {/*conditional rendering based on selected tab*/}
     </>
   )
 }

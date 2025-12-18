@@ -1,0 +1,95 @@
+.program-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 2rem;
+    border: 1px solid #4B556320;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.program-details input{
+    width: 100%;
+}
+
+.program-details .input-progName{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.difficulties{
+    margin-top: .7rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.days-container{
+    margin-top: .7rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.day-btn{
+    background-color: #F3F4F6;
+}
+
+.diff-btn{
+    background-color: #F3F4F6;
+    padding: .8rem 2rem;
+}
+
+.selected{
+    transition: .2s;
+    color: white;
+    background-color: #FF6B35;
+}
+
+.exercise-form{
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid #4B556320;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.exercise-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.exercise-group{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #F9FAFB;
+}
+
+.add-exercise-btn{
+    background-color: #FF6B35;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.exercise-inputs{
+    gap: .5rem;
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.remove-exercise-btn{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

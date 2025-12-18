@@ -1,0 +1,32 @@
+.program-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    gap: 1rem;
+}
+
+.program-card{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #E5E7EB;
+    background-color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: #4B556320 0px 1px 2px 0px;
+}
+
+.program-card p{
+    line-height: 2.5;
+    font-size: .8rem;
+    color: #5e6066;
+}
+
+.program-card h4{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.program-card span{
+    height: 1px;
+    background-color: #E5E7EB;
+}

@@ -12,7 +12,6 @@ height: 100%;
 
 input{
     padding: 0.7rem;
-    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -26,13 +25,27 @@ button{
 
 .app-container {
     display: flex;
-    
+    min-height: 100vh; /* ✔ allows content to grow */
 }
 
 .main-content {
-    width: 100%;
-    height: auto;
-    padding: 3rem;
+    margin-left: 13rem;
+    flex: 1; /* occupy remaining height */
+    overflow-y: auto; /* scroll kapag lumampas sa height */
+    padding: 3rem; /* optional spacing */
     background-color: #F9FAFB;
-    min-height: 100vh; /* ✔ allows content to grow */
+}
+
+label{
+    margin-bottom: 0.5rem;
+    font-size: .8rem;
+    color: #4b5563;
+}
+
+.navbar{
+    position: fixed; /* or sticky */
+    left: 0;
+    top: 0;
+    width: 250px; /* adjust as needed */
+    height: 100vh; /* full height */
 }

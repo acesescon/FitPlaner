@@ -1,20 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "../styles/NavbarComponent.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {House,TableOfContents,CircleFadingPlus,Bolt} from "lucide-react"
 
 export default function NavbarComponent() {
-    //===========================================
-    // FIX POSITIONING OF NAVBAR ADD
-    //===========================================
     return (
         <aside  className="navbar">
             <h1>FitPlaner</h1>
             <nav>
-                <Link className='link' to="/"><FontAwesomeIcon icon="fa-regular fa-house" />Home</Link>
-                <Link className='link' to="/contents">Contents</Link>
-                <Link className='link' to="/create">Create</Link>
-                <Link className='link' to="/settings">Settings</Link>
+                <Link className='link' to="/"> <House absoluteStrokeWidth /> Home</Link>
+                <Link className='link' to="/contents"><TableOfContents absoluteStrokeWidth /> Contents</Link>
+                <Link className='link' to="/create"><CircleFadingPlus absoluteStrokeWidth /> Create</Link>
+                <Link className='link' to="/settings"><Bolt absoluteStrokeWidth /> Settings</Link>
             </nav>
         </aside>
     )

@@ -1,0 +1,14 @@
+.create-page-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.plan{
+    background-color: #ffefea ;
+}
+
+.active{
+    background-color: #FF6B35;
+    color: white;
+}
