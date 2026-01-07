@@ -20,9 +20,14 @@
 }
 
 .difficulties{
+    width: 100%;
     margin-top: .7rem;
     display: flex;
     gap: 1rem;
+}
+
+.difficulties button{
+    width: 100%;
 }
 
 .days-container{
@@ -70,6 +75,7 @@
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #F9FAFB;
+    width: 100%;
 }
 
 .add-exercise-btn{
@@ -78,18 +84,14 @@
     border-radius: 0.5rem;
 }
 
-.exercise-inputs{
-    gap: .5rem;
-    flex: 1;
-    margin-bottom: 0;
+.exercise-group input{
+    width: 100%;
 }
 
 .remove-exercise-btn{
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0rem;
 }

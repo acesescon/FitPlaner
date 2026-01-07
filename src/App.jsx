@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Link, Router } from "react-router-dom";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "./components/NavbarComponent"
 import Authentication from "./pages/Authentication"
 import ContetsList from "./pages/ContentsList"
@@ -20,13 +20,33 @@ export default function App() {
     setISLoggedIn(true);
   }
 
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 834) {
+        setIsOpen(false); // 👈 force close
+      }
+    };
+
+    handleResize(); // run once
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
 
       {isLoggedIn ? (
         //if true = isLoggedIn
         <div className="app-container">
-          <Navbar />
+          <button className='burger' 
+            onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? "✕" : "☰"}
+          </button>
+
+          <Navbar open={isOpen}  />
           <main className="main-content">
             <Routes>
               <Route path="/" element={<LandingPage/>} />

@@ -48,4 +48,49 @@ label{
     top: 0;
     width: 250px; /* adjust as needed */
     height: 100vh; /* full height */
+    transition: transform 0.3s ease;
+    z-index: 999;
+}
+
+.burger{
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background-color: #1A2332;
+    width: 3rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    z-index: 1000;
+}
+
+.closed {
+    transform: translateX(-100%);
+}
+
+.open {
+    transform: translateX(0);
+}
+
+@media (max-width: 834px) {
+    .main-content {
+        margin-left: 0;
+        padding-top: 5rem;
+    }
+
+    .burger{
+    display: block;
+    }
+}
+
+@media (max-width: 640px) {
+    .main-content {
+        padding: 1.5rem;
+        padding-top: 5rem;
+    }
 }

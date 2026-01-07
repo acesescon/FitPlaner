@@ -30,3 +30,9 @@
     height: 1px;
     background-color: #E5E7EB;
 }
+
+@media (max-width: 640px) {
+    .program-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

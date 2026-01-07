@@ -105,3 +105,53 @@
     right: 1rem;
     top: 20%;
 }
+
+@media (max-width: 1024px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .info-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .stats-box {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .stat{
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-box {
+        align-items: center;
+        text-align: center;
+    }
+
+    .info p{
+        width: 100%;
+    }
+
+    .getstarted-container{
+        flex-direction: column;
+    }
+
+    .create{
+        width: 100%;
+        padding: 2rem;
+    }
+}
