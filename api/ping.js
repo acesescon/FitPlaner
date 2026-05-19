@@ -5,6 +5,7 @@ const supabase = createClient(
     process.env.VITE_SUPABASE_PUBLISHABLE_KEY
     )
 
+
     export default async function handler(req, res) {
     const { error } = await supabase
         .from('users')
