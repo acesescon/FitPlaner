@@ -36,7 +36,9 @@ export default function Login() {
             </div>
 
             <div className='px-30 py-10 bg-[var(--font-black)] w-1/2'>
+                <div className="bg-[url('../assets/login_bg.png') w-screen">
 
+                </div>
             </div>
         </section>
     )
