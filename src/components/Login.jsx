@@ -2,18 +2,18 @@ import { useState } from 'react'
 import logo from '../assets/FitPlanner_icon.png'
 import login_bg from '../assets/login_bg.png'
 
-export default function Login() {
+export default function Login({ onLoginSuccess, onSwitchPage }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    //data holder
 
     async function handleSubmit(event) {
-        event.preventDefault()
-        setError('')
-        setLoading(true)
+        event.preventDefault()//prevent load of the page
+        setLoading(true) //for loading
 
-        try {
+        try { //execute first
         const res = await fetch('/api/routes/login', {
             method: 'POST',
             headers: {
@@ -29,14 +29,12 @@ export default function Login() {
             return
         }
 
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('user', JSON.stringify(data.user))
-        window.location.href = '/dashboard'
-        } catch (err) {
+        onLoginSuccess(data.user, data.token)
+        } catch (err) { //execute if error
         setError('Unable to connect. Please try again later.')
         console.error('Login request failed:', err)
-        } finally {
-        setLoading(false)
+        } finally { //after execute
+        setLoading(false) //stop loading
         }
     }
 
@@ -96,7 +94,16 @@ export default function Login() {
 
             <div className="flex gap-2">
             <p>Don't have an account?</p>
-            <a href="/signup" className="text-(--button-color)">Sign up</a>
+            <a
+              href="/signup"
+              className="text-(--button-color)"
+              onClick={(e) => {
+                e.preventDefault()
+                onSwitchPage()
+              }}
+            >
+              Sign up
+            </a>
             </div>
         </div>
 
