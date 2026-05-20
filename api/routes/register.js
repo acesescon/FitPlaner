@@ -1,42 +1,49 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../utils/supabase.js";
 import bcrypt from "bcryptjs";
 
-export async function POST(req) {
+function jsonResponse(body, status = 200) {
+    return new Response(JSON.stringify(body), {
+        status,
+        headers: {
+        "Content-Type": "application/json",
+        },
+    });
+    }
+
+    export async function POST(req) {
     try {
         const body = await req.json();
-        const {name, email, password } = body;
+        const { full_name, email, password } = body;
 
-        // 1. basic validation
-        if (!name || !email || !password) {
-        return Response.json(
+        if (!full_name || !email || !password) {
+        return jsonResponse(
             { error: "Full name, email, and password are required" },
-            { status: 400 }
+            400
         );
         }
 
-        // 2. check if user already exists
-        const { data: existingUser } = await supabase
+        const { data: existingUser, error: checkError } = await supabase
         .from("users")
         .select("id")
         .eq("email", email)
         .single();
 
-        if (existingUser) {
-        return Response.json(
-            { error: "User already exists" },
-            { status: 409 }
-        );
+        if (checkError && checkError.code !== "PGRST116") {
+        console.error("Supabase check error:", checkError);
+        return jsonResponse({ error: "Unable to verify existing user" }, 500);
         }
 
-        // 3. hash password
+        if (existingUser) {
+        return jsonResponse({ error: "User already exists" }, 409);
+        }
+
         const password_hash = await bcrypt.hash(password, 10);
 
-        // 4. insert user
-        const { data, error } = await supabase
+        const { data, error: insertError } = await supabase
         .from("users")
         .insert([
             {
-            name,
+            full_name,
             email,
             password_hash,
             },
@@ -44,27 +51,25 @@ export async function POST(req) {
         .select()
         .single();
 
-        if (error) {
-        return Response.json(
-            { error: "Failed to create user" },
-            { status: 500 }
-        );
+        if (insertError || !data) {
+        console.error("Supabase insert error:", insertError);
+        return jsonResponse({ error: "Failed to create user" }, 500);
         }
 
-        // 5. response (NO PASSWORD RETURNED)
-        return Response.json({
+        return jsonResponse({
         message: "User registered successfully",
         user: {
             id: data.id,
-            name: data.name,
+            full_name: data.full_name,
             email: data.email,
         },
         });
 
     } catch (err) {
-        return Response.json(
-        { error: err },
-        { status: 500 }
+        console.error("Register route exception:", err);
+        return jsonResponse(
+        { error: err?.message || String(err) },
+        500
         );
     }
 }

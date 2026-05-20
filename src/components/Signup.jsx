@@ -44,7 +44,7 @@ export default function Signup({ onSwitchPage }) {
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name: fullName, email, password }),
+            body: JSON.stringify({ full_name: fullName, email, password }),
         })
 
         const data = await res.json()
