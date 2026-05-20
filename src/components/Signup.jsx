@@ -3,6 +3,7 @@ import signup_bg from '../assets/signup_bg.png'
 import logo from '../assets/FitPlanner_icon.png'
 
 export default function Signup({ onSwitchPage }) {
+    const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -15,6 +16,13 @@ export default function Signup({ onSwitchPage }) {
         setError('')
         setSuccess('')
         setLoading(true)
+
+        // Validate full name
+        if (!fullName.trim()) {
+        setError('Full name is required.')
+        setLoading(false)
+        return
+        }
 
         // Validate passwords match
         if (password !== confirmPassword) {
@@ -36,7 +44,7 @@ export default function Signup({ onSwitchPage }) {
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ name: fullName, email, password }),
         })
 
         const data = await res.json()
@@ -72,6 +80,19 @@ export default function Signup({ onSwitchPage }) {
             </p>
 
             <form className="flex flex-col py-6" onSubmit={handleSubmit}>
+            <div className="flex flex-col py-3">
+                <label htmlFor="full_name">Full Name:</label>
+                <input
+                id="full_name"
+                className="border border-[#E2E8F0] py-2 px-4 rounded-xl"
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Jane Doe"
+                required
+                />
+            </div>
+
             <div className="flex flex-col py-3">
                 <label htmlFor="email">Email:</label>
                 <input

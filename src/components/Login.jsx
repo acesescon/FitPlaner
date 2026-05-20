@@ -95,14 +95,14 @@ export default function Login({ onLoginSuccess, onSwitchPage }) {
             <div className="flex gap-2">
             <p>Don't have an account?</p>
             <a
-              href="/signup"
-              className="text-(--button-color)"
-              onClick={(e) => {
-                e.preventDefault()
-                onSwitchPage()
-              }}
-            >
-              Sign up
+                href="/signup"
+                className="text-(--button-color)"
+                onClick={(e) => {
+                    e.preventDefault()
+                    onSwitchPage()
+                }}
+                >
+                Sign up
             </a>
             </div>
         </div>

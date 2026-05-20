@@ -4,12 +4,12 @@ import bcrypt from "bcryptjs";
 export async function POST(req) {
     try {
         const body = await req.json();
-        const { email, password } = body;
+        const {name, email, password } = body;
 
         // 1. basic validation
-        if (!email || !password) {
+        if (!name || !email || !password) {
         return Response.json(
-            { error: "Email and password are required" },
+            { error: "Full name, email, and password are required" },
             { status: 400 }
         );
         }
@@ -36,6 +36,7 @@ export async function POST(req) {
         .from("users")
         .insert([
             {
+            name,
             email,
             password_hash,
             },
@@ -55,6 +56,7 @@ export async function POST(req) {
         message: "User registered successfully",
         user: {
             id: data.id,
+            name: data.name,
             email: data.email,
         },
         });
